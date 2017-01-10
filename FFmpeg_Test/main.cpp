@@ -37,7 +37,7 @@ int main(void)
 	AVCodecID	v_codec_id = AV_CODEC_ID_MPEG4;
 	AVCodecID   a_codec_id = AV_CODEC_ID_MP2;
 
-	const char	*szFilePath = "small.flv";//x264
+	const char	*szFilePath = "sample2.mp4";//x264
 	const char	*outputfile = "output.avi";
 	char        *output_format;
 	av_register_all();
@@ -122,7 +122,7 @@ int main(void)
 	}
 	ofmt = ofmt_ctx->oformat;
 
-	for (int i = 0; i < ifmt_ctx->nb_streams-1; i++) {
+	for (int i = 0; i < ifmt_ctx->nb_streams; i++) {
 		AVStream *in_stream  = ifmt_ctx->streams[i];
 		AVStream *out_stream = avformat_new_stream(ofmt_ctx, in_stream->codec->codec);
 		if (ifmt_ctx->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO) {
